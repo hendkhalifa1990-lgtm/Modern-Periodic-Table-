@@ -1,0 +1,2097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Modern Periodic Table</title>
+
+    <style>* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background:
+        radial-gradient(circle at 50% 40%, #111827 0%, #080b12 55%, #05070c 100%);
+
+    color: #dce7ff;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    min-height: 100vh;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   TOP BAR
+========================= */
+
+.topbar {
+    width: 94%;
+    max-width: 1200px;
+
+    margin: 18px auto 10px;
+
+    padding: 9px 12px;
+
+    border: 1px solid #293149;
+
+    border-radius: 14px;
+
+    background: rgba(20, 25, 40, .92);
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    box-shadow: 0 10px 40px rgba(0,0,0,.3);
+}
+
+
+.mode {
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    font-size: 10px;
+}
+
+
+.mode > span {
+    color: #8490a8;
+
+    margin-right: 5px;
+}
+
+
+button {
+    border: 1px solid #30394e;
+
+    background: #171d2c;
+
+    color: #b8c4dc;
+
+    border-radius: 9px;
+
+    padding: 8px 12px;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+
+button:hover {
+    border-color: #9b55ff;
+
+    color: white;
+
+    transform: translateY(-1px);
+}
+
+
+.mode .active {
+    background: linear-gradient(135deg,#a347ff,#c368ff);
+
+    color: white;
+
+    border-color: #b05cff;
+
+    box-shadow: 0 0 20px rgba(176,92,255,.35);
+}
+
+
+.tools {
+    display: flex;
+
+    gap: 7px;
+
+    flex-wrap: wrap;
+
+    justify-content: flex-end;
+}
+
+
+.tools button {
+    font-size: 10px;
+
+    padding: 7px 10px;
+}
+
+
+.tools .guide {
+    background: #f6cf35;
+
+    color: #181818;
+
+    border-color: #f6cf35;
+}
+
+
+/* =========================
+   DISCOVER
+========================= */
+
+.discover {
+    width: 94%;
+    max-width: 1100px;
+
+    margin: 5px auto 15px;
+
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 5px;
+}
+
+
+.discover span {
+    background: white;
+
+    color: #496583;
+
+    padding: 5px 9px;
+
+    border-radius: 15px;
+
+    font-size: 11px;
+}
+
+
+.discover button {
+    background: white;
+
+    color: #3473a5;
+
+    border: 0;
+
+    padding: 5px 9px;
+
+    font-size: 11px;
+
+    border-radius: 15px;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.container {
+    width: 94%;
+    max-width: 1120px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 2.1fr 1fr;
+
+    gap: 12px;
+}
+
+
+.left-panel,
+.right-panel {
+    border: 1px solid #273047;
+
+    background: rgba(10, 15, 27, .93);
+
+    border-radius: 13px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 15px 60px rgba(0,0,0,.35);
+}
+
+
+/* =========================
+   CONTROL BAR
+========================= */
+
+.control-bar {
+    min-height: 55px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    border-bottom: 1px solid #283147;
+
+    padding: 8px 12px;
+}
+
+
+.display-control {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    font-size: 10px;
+
+    color: #a6b1c8;
+}
+
+
+.display-control small {
+    color: #69758d;
+}
+
+
+.particles {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+}
+
+
+.particle {
+    padding: 5px 9px;
+
+    border-radius: 7px;
+
+    background: #131a29;
+
+    border: 1px solid #2a3347;
+
+    font-size: 11px;
+}
+
+
+.proton b {
+    color: #ff7859;
+}
+
+
+.neutron b {
+    color: #c2cbd9;
+}
+
+
+.electron b {
+    color: #43d9ed;
+}
+
+
+.atomic-info {
+    display: flex;
+
+    flex-direction: column;
+
+    font-size: 8px;
+
+    color: #73809a;
+
+    margin-left: 7px;
+}
+
+
+.atomic-info strong {
+    color: #d4b869;
+
+    font-size: 10px;
+}
+
+
+.isotope {
+    color: #56e1ef;
+
+    background: #111b2a;
+
+    padding: 7px;
+
+    border-radius: 7px;
+
+    font-size: 12px;
+}
+
+
+.radioactive {
+    color: #ff666e;
+
+    font-weight: bold;
+
+    font-size: 10px;
+
+    border: 1px solid #6d313e;
+
+    background: #25151c;
+
+    padding: 7px 9px;
+
+    border-radius: 10px;
+}
+
+
+/* =========================
+   ATOM AREA
+========================= */
+
+.atom-area {
+    height: 570px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(rgba(25,36,59,.16) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(25,36,59,.16) 1px, transparent 1px);
+
+    background-size: 40px 40px;
+}
+
+
+.atom-area::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(41,53,90,.12),
+            transparent 60%
+        );
+}
+
+
+/* =========================
+   ATOM
+========================= */
+
+#atom {
+    width: 510px;
+
+    height: 510px;
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 49%;
+
+    transform: translate(-50%, -50%);
+
+    perspective: 800px;
+}
+
+
+.nucleus {
+    position: absolute;
+
+    width: 115px;
+
+    height: 115px;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #ff9670 0%,
+            #d85b4d 38%,
+            #773846 75%,
+            #351a2c 100%
+        );
+
+    box-shadow:
+        0 0 35px rgba(255,91,88,.25),
+        inset 0 0 25px rgba(255,255,255,.1);
+
+    z-index: 20;
+}
+
+
+.shell {
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    border: 1px dashed rgba(100,112,180,.35);
+
+    box-shadow:
+        0 0 15px rgba(40,70,160,.05);
+}
+
+
+.shell1 {
+    width: 145px;
+    height: 145px;
+}
+
+
+.shell2 {
+    width: 190px;
+    height: 190px;
+}
+
+
+.shell3 {
+    width: 235px;
+    height: 235px;
+}
+
+
+.shell4 {
+    width: 280px;
+    height: 280px;
+}
+
+
+.shell5 {
+    width: 330px;
+    height: 330px;
+}
+
+
+.shell6 {
+    width: 380px;
+    height: 380px;
+}
+
+
+.shell7 {
+    width: 430px;
+    height: 430px;
+}
+
+
+.electron {
+    position: absolute;
+
+    width: 11px;
+
+    height: 11px;
+
+    border-radius: 50%;
+
+    background: #45e4f1;
+
+    box-shadow:
+        0 0 5px #45e4f1,
+        0 0 15px rgba(69,228,241,.8);
+
+    z-index: 15;
+}
+
+
+.electron::after {
+    content: "−";
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform: translate(-50%,-55%);
+
+    color: #073238;
+
+    font-size: 9px;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   SHELL INFO
+========================= */
+
+.shell-info {
+    position: absolute;
+
+    left: 12px;
+
+    bottom: 14px;
+
+    width: 150px;
+
+    padding: 10px;
+
+    background: rgba(24,19,48,.85);
+
+    border: 1px solid #563a85;
+
+    border-radius: 9px;
+
+    z-index: 50;
+}
+
+
+.shell-info h4 {
+    font-size: 9px;
+
+    color: #b87aff;
+
+    margin-bottom: 7px;
+}
+
+
+.shell-row {
+    display: grid;
+
+    grid-template-columns: 30px 55px 1fr;
+
+    align-items: center;
+
+    gap: 4px;
+
+    margin: 5px 0;
+
+    font-size: 9px;
+}
+
+
+.shell-row span {
+    color: #a8b1c8;
+}
+
+
+.shell-row b {
+    color: #d5d8e7;
+
+    font-size: 8px;
+}
+
+
+.shell-row i {
+    height: 5px;
+
+    border-radius: 4px;
+
+    background: #242b3b;
+
+    overflow: hidden;
+}
+
+
+.shell-row em {
+    display: block;
+
+    height: 100%;
+
+    width: 50%;
+
+    background: #4dddea;
+
+    border-radius: 4px;
+}
+
+
+/* =========================
+   ATOM BUTTONS
+========================= */
+
+.atom-buttons {
+    position: absolute;
+
+    right: 13px;
+
+    top: 28px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+    z-index: 50;
+}
+
+
+.atom-buttons button {
+    color: #d18cff;
+
+    border-color: #7140a4;
+
+    background: #1c1530;
+
+    font-size: 11px;
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-box {
+    height: 44px;
+
+    border-top: 1px solid #293147;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 7px 12px;
+}
+
+
+.search-box span {
+    color: #50dcea;
+}
+
+
+.search-box input {
+    width: 100%;
+
+    background: transparent;
+
+    border: 0;
+
+    outline: none;
+
+    color: white;
+
+    font-size: 12px;
+}
+
+
+.search-box input::placeholder {
+    color: #66718a;
+}
+
+
+.fullscreen {
+    position: absolute;
+
+    top: 18px;
+
+    left: 16px;
+
+    z-index: 60;
+
+    font-size: 10px;
+
+    padding: 7px 10px;
+}
+
+
+/* =========================
+   RIGHT PANEL
+========================= */
+
+.right-panel {
+    padding: 10px;
+}
+
+
+.element-card {
+    position: relative;
+
+    min-height: 82px;
+
+    border: 1px solid #7441a4;
+
+    border-radius: 10px;
+
+    padding: 9px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(120,42,220,.09),
+            transparent 60%
+        );
+}
+
+
+.element-card small {
+    font-size: 9px;
+
+    color: #c6b8d8;
+}
+
+
+.symbol {
+    text-align: center;
+
+    font-size: 28px;
+
+    font-weight: bold;
+
+    color: #c46cff;
+
+    margin-top: 4px;
+}
+
+
+.category {
+    text-align: center;
+
+    font-size: 9px;
+
+    color: #aab0bf;
+}
+
+
+.mass-number {
+    position: absolute;
+
+    right: 10px;
+
+    top: 10px;
+
+    color: #d5c381;
+
+    font-size: 9px;
+}
+
+
+/* =========================
+   STATS
+========================= */
+
+.stats {
+    margin-top: 8px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 6px;
+}
+
+
+.stats > div {
+    min-height: 52px;
+
+    border: 1px solid #252e43;
+
+    border-radius: 6px;
+
+    padding: 7px;
+
+    background: #0e1421;
+}
+
+
+.stats label {
+    display: block;
+
+    font-size: 7px;
+
+    color: #7d899f;
+
+    margin-bottom: 5px;
+}
+
+
+.stats strong {
+    font-size: 12px;
+
+    color: #cdd8eb;
+}
+
+
+.green {
+    color: #58d48a !important;
+}
+
+
+.red {
+    color: #ff6767 !important;
+}
+
+
+/* =========================
+   SHELL SUMMARY
+========================= */
+
+.shell-summary {
+    margin-top: 8px;
+
+    padding: 9px;
+
+    background: #0e1421;
+
+    border: 1px solid #2a3347;
+
+    border-radius: 7px;
+
+    font-size: 8px;
+
+    color: #7d899f;
+}
+
+
+.shell-summary span {
+    color: #b896ed;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================
+   PERIODIC TABLE
+========================= */
+
+.periodic {
+    margin-top: 9px;
+
+    border: 1px solid #292f43;
+
+    border-radius: 8px;
+
+    padding: 7px;
+
+    background: #0b101b;
+}
+
+
+.periodic-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    font-size: 8px;
+
+    color: #8a95a9;
+
+    margin-bottom: 7px;
+}
+
+
+.filters {
+    display: grid;
+
+    grid-template-columns: repeat(5,1fr);
+
+    gap: 2px;
+
+    margin-bottom: 7px;
+}
+
+
+.filters button {
+    padding: 4px;
+
+    font-size: 8px;
+
+    border-radius: 4px;
+}
+
+
+.filters .selected {
+    background: #a84cff;
+
+    color: white;
+}
+
+
+#periodicTable {
+    display: grid;
+
+    grid-template-columns: repeat(18, 1fr);
+
+    grid-auto-rows: 20px;
+
+    gap: 2px;
+}
+
+
+.element {
+    border: 1px solid #252d40;
+
+    border-radius: 2px;
+
+    font-size: 7px;
+
+    color: #c5cee0;
+
+    background: #151b29;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition: .15s;
+}
+
+
+.element:hover {
+    transform: scale(1.35);
+
+    z-index: 20;
+
+    border-color: #b95cff;
+
+    box-shadow: 0 0 12px rgba(185,92,255,.5);
+}
+
+
+.element.active {
+    background: #a748ff;
+
+    color: white;
+
+    border-color: #dc9cff;
+}
+
+
+/* category colors */
+
+.alkali {
+    background: #382329;
+}
+
+.alkaline {
+    background: #303025;
+}
+
+.transition {
+    background: #182d35;
+}
+
+.metalloid {
+    background: #253127;
+}
+
+.nonmetal {
+    background: #172c32;
+}
+
+.halogen {
+    background: #2d2034;
+}
+
+.noble {
+    background: #302034;
+}
+
+.lanthanide {
+    background: #222a35;
+}
+
+.actinide {
+    background: #302133;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 950px) {
+
+    .topbar {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .tools {
+        justify-content: center;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .right-panel {
+        order: 2;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .container {
+        width: 98%;
+    }
+
+    .control-bar {
+        flex-direction: column;
+
+        gap: 8px;
+    }
+
+    .particles {
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+    .atom-area {
+        height: 470px;
+    }
+
+    #atom {
+        transform:
+            translate(-50%, -50%)
+            scale(.78);
+    }
+
+    .shell-info {
+        transform: scale(.85);
+
+        transform-origin: left bottom;
+    }
+
+    .atom-buttons {
+        transform: scale(.85);
+
+        transform-origin: right top;
+    }
+
+    .tools button {
+        font-size: 8px;
+    }
+
+}</style>
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div class="mode">
+        <span>MODE</span>
+
+        <button class="active">Build</button>
+        <button>Explore</button>
+        <button>Practice</button>
+        <button>Quiz</button>
+    </div>
+
+    <div class="tools">
+        <button>⚛ Chemical Bonds</button>
+        <button>Σ Balance Equations</button>
+        <button>⚗ Titration</button>
+        <button>🔗 Share your setup</button>
+        <button class="guide">User Guide</button>
+    </div>
+
+</header>
+
+
+<div class="discover">
+
+    <span>Discover more</span>
+    <button>Stable nuclide reference</button>
+    <button>Electron shell diagram</button>
+    <button>Atomic number game</button>
+    <button>Niels Bohr biography</button>
+    <button>Physics</button>
+    <button>Isotope analysis service</button>
+    <button>Chemical</button>
+
+</div>
+
+
+<main class="container">
+
+    <!-- LEFT SIDE -->
+    <section class="left-panel">
+
+        <div class="control-bar">
+
+            <div class="display-control">
+                <span>☷ DISPLAY CONTROLS</span>
+                <small>Neutral atom</small>
+            </div>
+
+            <div class="particles">
+
+                <div class="particle proton">
+                    <b>● p⁺</b>
+                    <span id="protonsTop">92</span>
+                </div>
+
+                <div class="particle neutron">
+                    <b>● n⁰</b>
+                    <span id="neutronsTop">146</span>
+                </div>
+
+                <div class="particle electron">
+                    <b>● e⁻</b>
+                    <span id="electronsTop">92</span>
+                </div>
+
+                <div class="atomic-info">
+                    <small>STD. ATOMIC WT.</small>
+                    <strong id="atomicWeightTop">238.03 u</strong>
+                    <small>MASS NO.</small>
+                    <strong id="massTop">238</strong>
+                </div>
+
+                <div class="isotope">
+                    <strong id="isotopeTop">²³⁸₉₂U</strong>
+                </div>
+
+                <div class="radioactive">
+                    RADIOACTIVE
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="atom-area">
+
+            <button class="fullscreen" onclick="fullscreenAtom()">
+                ⛶ Fullscreen
+            </button>
+
+            <div id="atom">
+
+                <div class="nucleus" id="nucleus"></div>
+
+                <div class="shell shell1"></div>
+                <div class="shell shell2"></div>
+                <div class="shell shell3"></div>
+                <div class="shell shell4"></div>
+                <div class="shell shell5"></div>
+                <div class="shell shell6"></div>
+                <div class="shell shell7"></div>
+
+                <div id="electrons"></div>
+
+            </div>
+
+
+            <div class="shell-info">
+
+                <h4>SHELL OCCUPANCY</h4>
+
+                <div class="shell-row">
+                    <span>n1</span>
+                    <b id="s1">2 e⁻</b>
+                    <i><em id="bar1"></em></i>
+                </div>
+
+                <div class="shell-row">
+                    <span>n2</span>
+                    <b id="s2">8 e⁻</b>
+                    <i><em id="bar2"></em></i>
+                </div>
+
+                <div class="shell-row">
+                    <span>n3</span>
+                    <b id="s3">18 e⁻</b>
+                    <i><em id="bar3"></em></i>
+                </div>
+
+                <div class="shell-row">
+                    <span>n4</span>
+                    <b id="s4">32 e⁻</b>
+                    <i><em id="bar4"></em></i>
+                </div>
+
+                <div class="shell-row">
+                    <span>n5</span>
+                    <b id="s5">18 e⁻</b>
+                    <i><em id="bar5"></em></i>
+                </div>
+
+                <div class="shell-row">
+                    <span>n6</span>
+                    <b id="s6">8 e⁻</b>
+                    <i><em id="bar6"></em></i>
+                </div>
+
+                <div class="shell-row">
+                    <span>n7</span>
+                    <b id="s7">0 e⁻</b>
+                    <i><em id="bar7"></em></i>
+                </div>
+
+            </div>
+
+
+            <div class="atom-buttons">
+
+                <button onclick="toggleOrbit()" id="orbitBtn">
+                    ◯ Orbit
+                </button>
+
+                <button onclick="toggleSpin()" id="spinBtn">
+                    ↻ Spin
+                </button>
+
+                <button onclick="showTable()">
+                    ▤ Table
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="search-box">
+
+            <span>🔍</span>
+
+            <input
+                type="text"
+                id="search"
+                placeholder="Search element (name, symbol or Z)"
+            >
+
+        </div>
+
+    </section>
+
+
+    <!-- RIGHT SIDE -->
+    <aside class="right-panel">
+
+        <div class="element-card">
+
+            <div>
+                <small>Z = <span id="atomicNumber">92</span></small>
+            </div>
+
+            <div class="symbol" id="symbol">
+                U
+            </div>
+
+            <div class="category" id="category">
+                Actinide
+            </div>
+
+            <div class="mass-number">
+                A = <span id="massNumber">238</span>
+            </div>
+
+        </div>
+
+
+        <div class="stats">
+
+            <div>
+                <label>PROTONS (Z)</label>
+                <strong id="protons">92</strong>
+            </div>
+
+            <div>
+                <label>NEUTRONS (N)</label>
+                <strong id="neutrons">146</strong>
+            </div>
+
+            <div>
+                <label>ELECTRONS (E⁻)</label>
+                <strong id="electronsCount">92</strong>
+            </div>
+
+            <div>
+                <label>MASS NO. (A)</label>
+                <strong id="massNo">238</strong>
+            </div>
+
+            <div>
+                <label>STD. ATOMIC WT. (U)</label>
+                <strong id="weight">238.03 u</strong>
+            </div>
+
+            <div>
+                <label>NET CHARGE</label>
+                <strong class="green">0 (neutral)</strong>
+            </div>
+
+            <div>
+                <label>NUCLEAR STABILITY</label>
+                <strong class="red" id="stability">
+                    Radioactive
+                </strong>
+            </div>
+
+        </div>
+
+
+        <div class="shell-summary">
+
+            Shells:
+
+            <span id="shellSummary">
+                2 , 8 , 18 , 32 , 18 , 8 , 0
+            </span>
+
+        </div>
+
+
+        <div class="periodic">
+
+            <div class="periodic-header">
+
+                <b>PERIODIC TABLE</b>
+
+                <span>Z = 1–118</span>
+
+            </div>
+
+            <div class="filters">
+
+                <button class="selected">All</button>
+                <button>s</button>
+                <button>p</button>
+                <button>d</button>
+                <button>f</button>
+
+            </div>
+
+            <div id="periodicTable"></div>
+
+        </div>
+
+    </aside>
+
+</main>
+
+
+<script>/* ==========================================
+   ELEMENT DATABASE
+========================================== */
+
+const elements = [
+
+    {z:1,s:"H",name:"Hydrogen",mass:1.008,a:1,cat:"Nonmetal",shell:[1]},
+    {z:2,s:"He",name:"Helium",mass:4.003,a:4,cat:"Noble Gas",shell:[2]},
+
+    {z:3,s:"Li",name:"Lithium",mass:6.94,a:7,cat:"Alkali Metal",shell:[2,1]},
+    {z:4,s:"Be",name:"Beryllium",mass:9.012,a:9,cat:"Alkaline Earth",shell:[2,2]},
+    {z:5,s:"B",name:"Boron",mass:10.81,a:11,cat:"Metalloid",shell:[2,3]},
+    {z:6,s:"C",name:"Carbon",mass:12.011,a:12,cat:"Nonmetal",shell:[2,4]},
+    {z:7,s:"N",name:"Nitrogen",mass:14.007,a:14,cat:"Nonmetal",shell:[2,5]},
+    {z:8,s:"O",name:"Oxygen",mass:15.999,a:16,cat:"Nonmetal",shell:[2,6]},
+    {z:9,s:"F",name:"Fluorine",mass:18.998,a:19,cat:"Halogen",shell:[2,7]},
+    {z:10,s:"Ne",name:"Neon",mass:20.180,a:20,cat:"Noble Gas",shell:[2,8]},
+
+    {z:11,s:"Na",name:"Sodium",mass:22.990,a:23,cat:"Alkali Metal",shell:[2,8,1]},
+    {z:12,s:"Mg",name:"Magnesium",mass:24.305,a:24,cat:"Alkaline Earth",shell:[2,8,2]},
+    {z:13,s:"Al",name:"Aluminium",mass:26.982,a:27,cat:"Post-transition Metal",shell:[2,8,3]},
+    {z:14,s:"Si",name:"Silicon",mass:28.085,a:28,cat:"Metalloid",shell:[2,8,4]},
+    {z:15,s:"P",name:"Phosphorus",mass:30.974,a:31,cat:"Nonmetal",shell:[2,8,5]},
+    {z:16,s:"S",name:"Sulfur",mass:32.06,a:32,cat:"Nonmetal",shell:[2,8,6]},
+    {z:17,s:"Cl",name:"Chlorine",mass:35.45,a:35,cat:"Halogen",shell:[2,8,7]},
+    {z:18,s:"Ar",name:"Argon",mass:39.948,a:40,cat:"Noble Gas",shell:[2,8,8]},
+
+    {z:19,s:"K",name:"Potassium",mass:39.098,a:39,cat:"Alkali Metal",shell:[2,8,8,1]},
+    {z:20,s:"Ca",name:"Calcium",mass:40.078,a:40,cat:"Alkaline Earth",shell:[2,8,8,2]},
+    {z:21,s:"Sc",name:"Scandium",mass:44.956,a:45,cat:"Transition Metal",shell:[2,8,9,2]},
+    {z:22,s:"Ti",name:"Titanium",mass:47.867,a:48,cat:"Transition Metal",shell:[2,8,10,2]},
+    {z:23,s:"V",name:"Vanadium",mass:50.942,a:51,cat:"Transition Metal",shell:[2,8,11,2]},
+    {z:24,s:"Cr",name:"Chromium",mass:52.00,a:52,cat:"Transition Metal",shell:[2,8,13,1]},
+    {z:25,s:"Mn",name:"Manganese",mass:54.938,a:55,cat:"Transition Metal",shell:[2,8,13,2]},
+    {z:26,s:"Fe",name:"Iron",mass:55.845,a:56,cat:"Transition Metal",shell:[2,8,14,2]},
+    {z:27,s:"Co",name:"Cobalt",mass:58.933,a:59,cat:"Transition Metal",shell:[2,8,15,2]},
+    {z:28,s:"Ni",name:"Nickel",mass:58.693,a:59,cat:"Transition Metal",shell:[2,8,16,2]},
+    {z:29,s:"Cu",name:"Copper",mass:63.546,a:64,cat:"Transition Metal",shell:[2,8,18,1]},
+    {z:30,s:"Zn",name:"Zinc",mass:65.38,a:65,cat:"Transition Metal",shell:[2,8,18,2]},
+
+    {z:31,s:"Ga",name:"Gallium",mass:69.723,a:70,cat:"Post-transition Metal",shell:[2,8,18,3]},
+    {z:32,s:"Ge",name:"Germanium",mass:72.630,a:73,cat:"Metalloid",shell:[2,8,18,4]},
+    {z:33,s:"As",name:"Arsenic",mass:74.922,a:75,cat:"Metalloid",shell:[2,8,18,5]},
+    {z:34,s:"Se",name:"Selenium",mass:78.971,a:79,cat:"Nonmetal",shell:[2,8,18,6]},
+    {z:35,s:"Br",name:"Bromine",mass:79.904,a:80,cat:"Halogen",shell:[2,8,18,7]},
+    {z:36,s:"Kr",name:"Krypton",mass:83.798,a:84,cat:"Noble Gas",shell:[2,8,18,8]},
+
+    {z:37,s:"Rb",name:"Rubidium",mass:85.468,a:85,cat:"Alkali Metal",shell:[2,8,18,8,1]},
+    {z:38,s:"Sr",name:"Strontium",mass:87.62,a:88,cat:"Alkaline Earth",shell:[2,8,18,8,2]},
+    {z:39,s:"Y",name:"Yttrium",mass:88.906,a:89,cat:"Transition Metal",shell:[2,8,18,9,2]},
+    {z:40,s:"Zr",name:"Zirconium",mass:91.224,a:91,cat:"Transition Metal",shell:[2,8,18,10,2]},
+
+    {z:47,s:"Ag",name:"Silver",mass:107.868,a:108,cat:"Transition Metal",shell:[2,8,18,18,1]},
+    {z:48,s:"Cd",name:"Cadmium",mass:112.414,a:112,cat:"Transition Metal",shell:[2,8,18,18,2]},
+    {z:49,s:"In",name:"Indium",mass:114.818,a:115,cat:"Post-transition Metal",shell:[2,8,18,18,3]},
+    {z:50,s:"Sn",name:"Tin",mass:118.710,a:119,cat:"Post-transition Metal",shell:[2,8,18,18,4]},
+
+    {z:54,s:"Xe",name:"Xenon",mass:131.293,a:131,cat:"Noble Gas",shell:[2,8,18,18,8]},
+
+    {z:55,s:"Cs",name:"Cesium",mass:132.905,a:133,cat:"Alkali Metal",shell:[2,8,18,18,8,1]},
+    {z:56,s:"Ba",name:"Barium",mass:137.327,a:137,cat:"Alkaline Earth",shell:[2,8,18,18,8,2]},
+
+    {z:79,s:"Au",name:"Gold",mass:196.967,a:197,cat:"Transition Metal",shell:[2,8,18,32,18,1]},
+    {z:80,s:"Hg",name:"Mercury",mass:200.592,a:201,cat:"Transition Metal",shell:[2,8,18,32,18,2]},
+
+    {z:82,s:"Pb",name:"Lead",mass:207.2,a:207,cat:"Post-transition Metal",shell:[2,8,18,32,18,4]},
+
+    {z:86,s:"Rn",name:"Radon",mass:222,a:222,cat:"Noble Gas",shell:[2,8,18,32,18,8]},
+
+    {z:87,s:"Fr",name:"Francium",mass:223,a:223,cat:"Alkali Metal",shell:[2,8,18,32,18,8,1]},
+
+    {z:88,s:"Ra",name:"Radium",mass:226,a:226,cat:"Alkaline Earth",shell:[2,8,18,32,18,8,2]},
+
+    {z:92,s:"U",name:"Uranium",mass:238.029,a:238,cat:"Actinide",shell:[2,8,18,32,21,9,2]},
+
+    {z:94,s:"Pu",name:"Plutonium",mass:244,a:244,cat:"Actinide",shell:[2,8,18,32,24,8,2]},
+
+    {z:118,s:"Og",name:"Oganesson",mass:294,a:294,cat:"Noble Gas",shell:[2,8,18,32,32,18,8]}
+];
+
+
+/* ==========================================
+   GET ELEMENT
+========================================== */
+
+function getElement(z) {
+
+    return elements.find(e => e.z === z) || elements[0];
+
+}
+
+
+/* ==========================================
+   CURRENT ELEMENT
+========================================== */
+
+let current = getElement(92);
+
+let orbitRunning = true;
+
+let spinRunning = true;
+
+let rotation = 0;
+
+
+/* ==========================================
+   DISPLAY ELEMENT
+========================================== */
+
+function displayElement(element) {
+
+    current = element;
+
+    const z = element.z;
+
+    const electrons = z;
+
+    const neutrons =
+        Math.max(0, Math.round(element.a - z));
+
+
+    /* right card */
+
+    document.getElementById("atomicNumber").textContent = z;
+
+    document.getElementById("symbol").textContent = element.s;
+
+    document.getElementById("category").textContent =
+        element.cat;
+
+    document.getElementById("massNumber").textContent =
+        element.a;
+
+
+    /* stats */
+
+    document.getElementById("protons").textContent = z;
+
+    document.getElementById("neutrons").textContent = neutrons;
+
+    document.getElementById("electronsCount").textContent = electrons;
+
+    document.getElementById("massNo").textContent = element.a;
+
+    document.getElementById("weight").textContent =
+        element.mass + " u";
+
+
+    /* top */
+
+    document.getElementById("protonsTop").textContent = z;
+
+    document.getElementById("neutronsTop").textContent =
+        neutrons;
+
+    document.getElementById("electronsTop").textContent =
+        electrons;
+
+    document.getElementById("atomicWeightTop").textContent =
+        element.mass + " u";
+
+    document.getElementById("massTop").textContent =
+        element.a;
+
+    document.getElementById("isotopeTop").textContent =
+        element.a + element.s;
+
+
+    /* stability */
+
+    const stable =
+        z <= 82 &&
+        ![43,61].includes(z);
+
+    const stability =
+        document.getElementById("stability");
+
+    if (stable) {
+
+        stability.textContent = "Stable";
+
+        stability.className = "green";
+
+    } else {
+
+        stability.textContent = "Radioactive";
+
+        stability.className = "red";
+
+    }
+
+
+    updateShells(element.shell);
+
+    createAtom(element);
+
+    highlightElement(element.z);
+
+}
+
+
+/* ==========================================
+   UPDATE SHELLS
+========================================== */
+
+function updateShells(shells) {
+
+    for (let i = 1; i <= 7; i++) {
+
+        const value = shells[i - 1] || 0;
+
+        document.getElementById(`s${i}`)
+            .textContent = value + " e⁻";
+
+        document.getElementById(`bar${i}`)
+            .style.width =
+            Math.min(value / (i === 1 ? 2 : i === 2 ? 8 : 32) * 100, 100)
+            + "%";
+
+    }
+
+
+    document.getElementById("shellSummary")
+        .textContent =
+        shells.join(" , ");
+
+}
+
+
+/* ==========================================
+   CREATE ATOM
+========================================== */
+
+function createAtom(element) {
+
+    const electronContainer =
+        document.getElementById("electrons");
+
+    electronContainer.innerHTML = "";
+
+
+    const shells = element.shell;
+
+
+    shells.forEach((count, shellIndex) => {
+
+        if (count <= 0) return;
+
+
+        const radius =
+            72 + shellIndex * 36;
+
+
+        for (let i = 0; i < count; i++) {
+
+            const electron =
+                document.createElement("div");
+
+            electron.className = "electron";
+
+
+            const angle =
+                (360 / count) * i;
+
+
+            const x =
+                Math.cos(angle * Math.PI / 180)
+                * radius;
+
+
+            const y =
+                Math.sin(angle * Math.PI / 180)
+                * radius;
+
+
+            electron.style.left =
+                `calc(50% + ${x}px - 5px)`;
+
+            electron.style.top =
+                `calc(50% + ${y}px - 5px)`;
+
+
+            electron.dataset.angle = angle;
+
+            electron.dataset.radius = radius;
+
+            electron.dataset.speed =
+                0.2 + shellIndex * 0.05;
+
+
+            electron.dataset.index = i;
+
+            electron.dataset.shell =
+                shellIndex;
+
+
+            electronContainer.appendChild(
+                electron
+            );
+
+        }
+
+    });
+
+}
+
+
+/* ==========================================
+   ORBIT ANIMATION
+========================================== */
+
+function animate() {
+
+    if (orbitRunning) {
+
+        const electrons =
+            document.querySelectorAll(".electron");
+
+
+        electrons.forEach((electron) => {
+
+            let angle =
+                parseFloat(electron.dataset.angle);
+
+            const radius =
+                parseFloat(electron.dataset.radius);
+
+            const speed =
+                parseFloat(electron.dataset.speed);
+
+
+            angle += speed;
+
+
+            electron.dataset.angle = angle;
+
+
+            const x =
+                Math.cos(angle * Math.PI / 180)
+                * radius;
+
+
+            const y =
+                Math.sin(angle * Math.PI / 180)
+                * radius;
+
+
+            electron.style.left =
+                `calc(50% + ${x}px - 5px)`;
+
+            electron.style.top =
+                `calc(50% + ${y}px - 5px)`;
+
+        });
+
+    }
+
+
+    if (spinRunning) {
+
+        rotation += .15;
+
+        document.getElementById("nucleus")
+            .style.transform =
+            `translate(-50%, -50%) rotate(${rotation}deg)`;
+
+    }
+
+
+    requestAnimationFrame(animate);
+
+}
+
+
+animate();
+
+
+/* ==========================================
+   ORBIT BUTTON
+========================================== */
+
+function toggleOrbit() {
+
+    orbitRunning = !orbitRunning;
+
+    document.getElementById("orbitBtn")
+        .textContent =
+        orbitRunning
+            ? "◯ Orbit"
+            : "▶ Orbit";
+
+}
+
+
+/* ==========================================
+   SPIN BUTTON
+========================================== */
+
+function toggleSpin() {
+
+    spinRunning = !spinRunning;
+
+    document.getElementById("spinBtn")
+        .textContent =
+        spinRunning
+            ? "↻ Spin"
+            : "▶ Spin";
+
+}
+
+
+/* ==========================================
+   SEARCH
+========================================== */
+
+const search =
+    document.getElementById("search");
+
+
+search.addEventListener("input", () => {
+
+    const value =
+        search.value.trim().toLowerCase();
+
+
+    if (!value) return;
+
+
+    let found;
+
+
+    if (!isNaN(value)) {
+
+        found =
+            elements.find(
+                e => e.z === Number(value)
+            );
+
+    } else {
+
+        found =
+            elements.find(
+                e =>
+                    e.s.toLowerCase() === value ||
+                    e.name.toLowerCase().includes(value)
+            );
+
+    }
+
+
+    if (found) {
+
+        displayElement(found);
+
+    }
+
+});
+
+
+/* ==========================================
+   PERIODIC TABLE
+========================================== */
+
+function createPeriodicTable() {
+
+    const table =
+        document.getElementById("periodicTable");
+
+    table.innerHTML = "";
+
+
+    elements.forEach(element => {
+
+        const cell =
+            document.createElement("button");
+
+
+        cell.className =
+            "element";
+
+
+        cell.textContent =
+            element.s;
+
+
+        cell.title =
+            `${element.name} (${element.z})`;
+
+
+        cell.dataset.z =
+            element.z;
+
+
+        cell.addEventListener(
+            "click",
+            () => {
+
+                displayElement(element);
+
+            }
+        );
+
+
+        /*
+            approximate periodic positions
+        */
+
+        let row = 1;
+
+        let column =
+            ((element.z - 1) % 18) + 1;
+
+
+        if (element.z <= 2) {
+
+            row = 1;
+
+            column =
+                element.z === 1
+                    ? 1
+                    : 18;
+
+        }
+
+        else if (element.z <= 10) {
+
+            row = 2;
+
+        }
+
+        else if (element.z <= 18) {
+
+            row = 3;
+
+        }
+
+        else if (element.z <= 36) {
+
+            row = 4;
+
+        }
+
+        else if (element.z <= 54) {
+
+            row = 5;
+
+        }
+
+        else if (element.z <= 86) {
+
+            row = 6;
+
+        }
+
+        else {
+
+            row = 7;
+
+        }
+
+
+        /*
+           Convert to CSS grid.
+        */
+
+        cell.style.gridColumn =
+            column;
+
+        cell.style.gridRow =
+            row;
+
+
+        cell.classList.add(
+            getCategoryClass(element.cat)
+        );
+
+
+        table.appendChild(cell);
+
+    });
+
+
+    /*
+      Add empty placeholders for
+      better periodic-table appearance.
+    */
+
+    const empty =
+        document.createElement("div");
+
+    empty.style.gridColumn =
+        "1 / span 18";
+
+    empty.style.height =
+        "5px";
+
+    table.appendChild(empty);
+
+}
+
+
+/* ==========================================
+   CATEGORY CLASS
+========================================== */
+
+function getCategoryClass(category) {
+
+    if (category.includes("Alkali"))
+        return "alkali";
+
+    if (category.includes("Alkaline"))
+        return "alkaline";
+
+    if (category.includes("Transition"))
+        return "transition";
+
+    if (category.includes("Metalloid"))
+        return "metalloid";
+
+    if (category.includes("Halogen"))
+        return "halogen";
+
+    if (category.includes("Noble"))
+        return "noble";
+
+    if (category.includes("Actinide"))
+        return "actinide";
+
+    if (category.includes("Lanthanide"))
+        return "lanthanide";
+
+    return "nonmetal";
+
+}
+
+
+/* ==========================================
+   HIGHLIGHT CURRENT ELEMENT
+========================================== */
+
+function highlightElement(z) {
+
+    document.querySelectorAll(".element")
+        .forEach(cell => {
+
+            cell.classList.remove("active");
+
+            if (
+                Number(cell.dataset.z) === z
+            ) {
+
+                cell.classList.add("active");
+
+            }
+
+        });
+
+}
+
+
+/* ==========================================
+   FULLSCREEN
+========================================== */
+
+function fullscreenAtom() {
+
+    const area =
+        document.querySelector(".atom-area");
+
+
+    if (!document.fullscreenElement) {
+
+        area.requestFullscreen();
+
+    } else {
+
+        document.exitFullscreen();
+
+    }
+
+}
+
+
+/* ==========================================
+   TABLE BUTTON
+========================================== */
+
+function showTable() {
+
+    document.querySelector(".right-panel")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+/* ==========================================
+   START
+========================================== */
+
+createPeriodicTable();
+
+displayElement(
+    getElement(92)
+);</script>
+
+</body>
+                                            </html>
